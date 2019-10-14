@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './../../services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['dashboard']);
     }, error => {
       console.log(error);
+      this.toastr.error('Error', 'Login Error!');
     });
   }
 
