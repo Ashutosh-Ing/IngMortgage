@@ -20,7 +20,7 @@ export class LoginService {
   login(userName, password) {
     console.log('Auth service Login');
 
-    let login = this.httpClient.post(environment.apiUrl + '/login/getToken', {
+    let login = this.httpClient.post(environment.apiUrl + '/login', {
       username: userName,
       password: password
     });
