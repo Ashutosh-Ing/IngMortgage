@@ -21,6 +21,10 @@ export class MortgageComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    console.log("onSubmit");
+  }
+
   onPersonalClick() {
     console.log("Personal tab is clicked");
   }
