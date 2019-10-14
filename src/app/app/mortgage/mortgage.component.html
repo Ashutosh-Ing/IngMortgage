@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+    <li class="active" (click)="onPersonalClick()"><a>Personal</a></li>
+    <li><a>Employeement</a></li>
+    <li><a>Property</a></li>
+    <li><a>Loan</a></li>
+</ul>
+
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div>
+                    <label for="firstName">First Name</label>
+                    <input type="input" id="firstName" class="form-control" formControlName="firstName" />
+
+                    <label for="lastName">Last Name</label>
+                    <input type="input" id="lastName" class="form-control" formControlName="lastName" />
+
+                    <label for="emailId">Email Id</label>
+                    <input type="email" id="emailId" class="form-control" formControlName="emailId" />
+
+                    <label for="mobile">Mobile No</label>
+                    <input type="input" id="number" class="form-control" formControlName="mobile" />
+                </div>
+            </div>
+
+            <div>
+                <button class="btn btn-primary">Create Account</button>
+            </div>
+        </form>
+    </div>
+</div>
