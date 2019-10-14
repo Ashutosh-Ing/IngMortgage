@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     console.log("onSubmit");
 
     let login = this.loginService.login(this.loginForm.value.username, this.loginForm.value.password);
-    login.subscribe((response) => {
+    login.subscribe((response: any) => {
       console.log(response);
       this.loginService.token = response.token;
       this.router.navigate(['dashboard']);

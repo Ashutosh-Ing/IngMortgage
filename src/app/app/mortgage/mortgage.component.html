@@ -1,31 +1,74 @@
 <ul class="nav nav-tabs">
-    <li class="active" (click)="onPersonalClick()"><a>Personal</a></li>
-    <li><a>Employeement</a></li>
-    <li><a>Property</a></li>
-    <li><a>Loan</a></li>
+    <li (click)="onPersonalClick()"><a>Personal</a></li>
+    <li (click)="onEmployeementClick()"><a>Employeement</a></li>
+    <li (click)="onPropertyClick()"><a>Property</a></li>
+    <li (click)="onLoanClick()"><a>Loan</a></li>
 </ul>
 
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
         <form [formGroup]="mortgageForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <div>
+                <div *ngIf="currentPage === 'personal'">
                     <label for="firstName">First Name</label>
-                    <input type="input" id="firstName" class="form-control" formControlName="firstName" />
+                    <input type="input" id="firstName" class="form-control" placeholder="Enter First Name"
+                        formControlName="firstName" />
 
                     <label for="lastName">Last Name</label>
-                    <input type="input" id="lastName" class="form-control" formControlName="lastName" />
+                    <input type="input" id="lastName" class="form-control" placeholder="Enter Last Name"
+                        formControlName="lastName" />
 
                     <label for="emailId">Email Id</label>
-                    <input type="email" id="emailId" class="form-control" formControlName="emailId" />
+                    <input type="email" id="emailId" class="form-control" placeholder="Enter Email Id"
+                        formControlName="emailId" />
 
                     <label for="mobile">Mobile No</label>
-                    <input type="input" id="number" class="form-control" formControlName="mobile" />
+                    <input type="input" id="number" class="form-control" placeholder="Enter Mobile Number"
+                        formControlName="mobile" />
+                </div>
+
+                <div *ngIf="currentPage === 'employeement'">
+                    <label for="employeeType">Employee Type</label>
+                    <input type="input" id="employeeType" class="form-control"
+                        placeholder="Enter Employee Type (Govt/Personal) Name" formControlName="employeeType" />
+
+                    <label for="currentCompany">Current Company</label>
+                    <input type="input" id="currentCompany" class="form-control" placeholder="Enter Current Company"
+                        formControlName="currentCompany" />
+
+                    <label for="salary">Salary</label>
+                    <input type="number" id="salary" class="form-control" placeholder="Enter Salary"
+                        formControlName="salary" />
+                </div>
+
+                <div *ngIf="currentPage === 'property'">
+                    <label for="propertyType">Property Type</label>
+                    <input type="input" id="propertyType" class="form-control" placeholder="Enter Property Type"
+                        formControlName="propertyType" />
+
+                    <label for="propertyNumber">Property Number</label>
+                    <input type="input" id="propertyNumber" class="form-control" placeholder="Enter Property Number"
+                        formControlName="propertyNumber" />
+                </div>
+
+                <div *ngIf="currentPage === 'loan'">
+                    <label for="loanAmount">Loan Amount</label>
+                    <input type="number" id="loanAmount" class="form-control" placeholder="Enter Loan Amount"
+                        formControlName="loanAmount" />
+
+                    <label for="depositAmount">Deposit Amount</label>
+                    <input type="number" id="depositAmount" class="form-control" placeholder="Enter Deposit Amount"
+                        formControlName="depositAmount" />
                 </div>
             </div>
 
             <div>
-                <button class="btn btn-primary">Create Account</button>
+                <button *ngIf="showPrevious()" class="btn btn-link" type="button"
+                    (click)="onPreviousClick()">Previous</button>
+
+                <button *ngIf="showNext()" class="btn btn-link" type="button" (click)="onNextClick()">Next</button>
+
+                <button *ngIf="showSubmit()" class="btn btn-primary">Create Account</button>
             </div>
         </form>
     </div>
