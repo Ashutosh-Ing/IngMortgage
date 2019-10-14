@@ -7,6 +7,8 @@ import { environment } from './../../environments/environment';
 })
 export class LoginService {
 
+  authenticated: boolean = false;
+
   httpClient: HttpClient;
 
   token: string = '';
@@ -24,5 +26,9 @@ export class LoginService {
     });
 
     return login;
+  }
+
+  isAuthenticated() {
+    return this.authenticated;
   }
 }

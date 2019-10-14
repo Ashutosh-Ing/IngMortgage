@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ing-app';
 
+  constructor(private loginService: LoginService) {
+
+  }
+
   isUserLogin() {
-    return true;
+    this.loginService.authenticated;
+  }
+
+  onLogout() {
+    this.loginService.authenticated = false;
   }
 }

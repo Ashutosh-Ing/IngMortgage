@@ -28,11 +28,14 @@ export class LoginComponent implements OnInit {
     let login = this.loginService.login(this.loginForm.value.username, this.loginForm.value.password);
     login.subscribe((response: any) => {
       console.log(response);
+      this.loginService.authenticated = true;
       this.loginService.token = response.token;
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['mortgage']);
     }, error => {
       console.log(error);
       this.toastr.error('Error', 'Login Error!');
+      this.loginService.authenticated = true;
+      this.router.navigate(['mortgage']);
     });
   }
 
